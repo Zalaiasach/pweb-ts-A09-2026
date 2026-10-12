@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Antrian Rumah Sakit</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="dist/index.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-brand">
+      <h1>Dashboard Admin</h1>
+      <p class="subtitle-nav">Reset setiap hari agar penomoran antrian mulai dari awal.</p>
+    </div>
+    <div class="nav-profile">
+      <span id="user-info">Memuat user...</span>
+      <button id="btn-reset-antrian" class="btn-outline-danger">Reset Antrian</button>
+      <button id="btn-logout" class="btn-secondary">Keluar</button>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- Kolom Kiri: Manajemen Jenis Antrian -->
+    <section class="card-panel">
+      <h2>Jenis antrian</h2>
+      <form id="form-jenis-antrian" class="form-inline">
+        <input type="text" id="input-kode" placeholder="Kode (1 huruf)" maxlength="1" required>
+        <input type="text" id="input-nama" placeholder="Contoh: Farmasi" required>
+        <button type="submit" class="btn-dark">Tambah</button>
+      </form>
+      <div id="error-jenis" class="error-text"></div>
+
+      <div id="daftar-jenis-antrian" class="list-container">
+        <!-- Render dinamis dari TypeScript -->
+      </div>
+    </section>
+
+    <!-- Kolom Kanan: Penerbitan Tiket Manual & Monitoring Antrian -->
+    <section class="card-panel">
+      <h2>Terbitkan tiket</h2>
+      <form id="form-tiket-manual" class="form-row">
+        <div class="form-control">
+          <label for="select-jenis">Jenis antrian</label>
+          <select id="select-jenis" required>
+            <option value="" disabled selected>Pilih jenis antrian</option>
+          </select>
+        </div>
+
+        <div class="form-control">
+          <label for="select-prioritas">Prioritas</label>
+          <select id="select-prioritas" required>
+            <option value="Normal" selected>Normal</option>
+            <option value="Lansia">Lansia</option>
+            <option value="Disabilitas">Disabilitas</option>
+            <option value="VIP">VIP</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-dark btn-terbitkan">Terbitkan</button>
+      </form>
+
+      <div class="divider"></div>
+
+      <!-- Tabel Antrian Per Kategori -->
+      <div id="daftar-antrian-kategori" class="antrian-kategori-container">
+        <!-- Render dinamis tabel tiket antrian per poli/layanan -->
+      </div>
+    </section>
+  </main>
+</body>
+</html>
