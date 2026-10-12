@@ -6,7 +6,10 @@
 }
 
 body {
-  background-color: #f8fafc;
+  background: 
+    linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.92)),
+    url(/pic/rumah_sakit.jpg) no-repeat center center fixed;
+  background-size: cover;
   color: #1e293b;
   min-height: 100vh;
   display: flex;
@@ -14,8 +17,10 @@ body {
 }
 
 .navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: #CBDCFA;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -96,10 +101,13 @@ body {
 }
 
 .card-panel {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 12px;
   padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
 }
 
 .card-panel h2 {
