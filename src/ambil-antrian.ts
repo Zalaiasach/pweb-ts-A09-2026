@@ -49,6 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLayanan();
   window.setInterval(renderLayanan, 2500);
 
+  selectLayanan.addEventListener("change", () => {
+    selectedKode = selectLayanan.value;
+    renderLayanan();
+  });
+
   formAmbil.addEventListener("submit", (event: Event) => {
     event.preventDefault();
 

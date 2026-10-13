@@ -25,10 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (existingRole === "admin" || existingRole === "moderator") {
       window.location.href = "index.html";
       return;
-    } else {
-      window.location.href = "operator.html";
+    }
+
+    if (existingRole === "user") {
+      window.location.href = "ambil-antrian.html";
       return;
     }
+
+    clearSession();
   }
 
   const loginForm = document.getElementById("login-form") as HTMLFormElement;
@@ -78,18 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
           const userRes = await fetch(`https://dummyjson.com/users/${data.id}`);
           if (userRes.ok) {
             const userData: UserDetailResponse = await userRes.json();
-            role = userData.role?.toLowerCase() || "user";
+            role = userData.role?.toLowerCase() || "";
           }
         } catch {
-          role = "user";
+          role = "";
         }
       }
 
-      // Standarisasi role moderator setara admin
-      if (role === "moderator") {
-        role = "admin";
-      } else if (!role) {
-        role = "user";
+      if (!role) {
+        throw new Error("Role pengguna tidak ditemukan dari API.");
       }
 
       // Simpan sesi ke Local Storage
@@ -99,10 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("username", data.username);
 
       // Auto Redirect Berdasarkan Role
-      if (role === "admin") {
+      if (role === "admin" || role === "moderator") {
         window.location.href = "index.html";
+      } else if (role === "user") {
+        window.location.href = "ambil-antrian.html";
       } else {
-        window.location.href = "operator.html";
+        clearSession();
+        showError(`Role '${role}' tidak memiliki akses ke sistem ini.`);
       }
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -133,5 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideError() {
     errorAlert.style.display = "none";
     errorAlert.textContent = "";
+  }
+
+  function clearSession() {
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("user_role");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("username");
   }
 });
