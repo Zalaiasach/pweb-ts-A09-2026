@@ -1,27 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Operator</title>
-        <link rel="stylesheet" href="operator.css">
-        <script src="dist/operator.js" defer></script>
-    </head>
-    <body>
-        <h1>DATA PASIEN</h1>
-        <div class="data-pasien" id="data"> <!---nama, telepon, penyakit-->
-            <table border="5px">
-                 <thead>
-                    <th>Nama Pasien</th>
-                    <th>No. Telepon</th>
-                    <th>Penyakit</th>
-                </thead>
-                
-                <tbody id="daftar-pasien">
-                </tbody>
-            </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator</title>
 
-            <button type="button" id="tabel-baru">+Add Table</button>
+    <script>
+        (function () {
+            try {
+                var s = JSON.parse(localStorage.getItem("auth_user"));
+                if (!s || !s.username) throw new Error("no session");
+            } catch (e) {
+                localStorage.removeItem("auth_user");
+                location.replace("login.html");
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="operator.css">
+    <script src="operator.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <h1>PANEL</h1>
+        <div>
+            <span id="info-user"></span>
+            <button type="button" id="btn-logout">Logout</button>
         </div>
-    </body>
+    </header>
+
+    <section class="panel-antrian">
+        <div class="kartu kartu-aktif">
+            <h2>Sedang Dipanggil</h2>
+            <div class="nomor" id="nomor-aktif">-</div>
+            <div class="detail" id="detail-aktif">Tak ada panggilan</div>
+        </div>
+
+        <div class="kartu">
+            <h2>Nomor Berikutnya</h2>
+            <div class="nomor kecil" id="nomor-berikut">-</div>
+            <div class="detail" id="detail-berikut"></div>
+            <div class="detail" id="sisa-antrian"></div>
+        </div>
+
+        <div class="aksi">
+            <button type="button" id="btn-panggil">Panggil Berikutnya</button>
+            <button type="button" id="btn-lewati">Lewati</button>
+            <button type="button" id="btn-selesai">Selesai</button>
+            <button type="button" id="btn-contoh">Buat Data Contoh</button>
+        </div>
+
+        <table border="1" class="tabel-antrian">
+            <thead>
+                <tr>
+                    <th>No. Tiket</th><th>Nama</th><th>Prioritas</th><th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="daftar-antrian"></tbody>
+        </table>
+    </section>
+
+    <h1>DATA PASIEN</h1>
+    <div class="data-pasien" id="data"> <!-- nama, telepon, penyakit -->
+        <table border="5">
+            <thead>
+                <tr>
+                    <th>Nama Pasien</th><th>No. Telepon</th><th>Penyakit</th><th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="daftar-pasien"></tbody>
+        </table>
+
+        <button type="button" id="tabel-baru">+Add Table</button>
+    </div>
+</body>
 </html>
