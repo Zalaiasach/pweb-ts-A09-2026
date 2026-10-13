@@ -25,3 +25,61 @@ td input{
 td button{
     cursor: pointer;
 }
+
+
+.topbar{ 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+}
+.panel-antrian{ 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:12px; 
+    margin-bottom:24px; 
+}
+.kartu{ 
+    border:2px solid #444; 
+    padding:12px 20px; 
+    min-width:220px; 
+    background:#fff; 
+}
+.kartu-aktif{ 
+    border-color:#0a7d2c; 
+}
+.kartu h2{ 
+    margin:0 0 6px; 
+    font-size:16px; 
+}
+.nomor{ 
+    font-size:48px; 
+    font-weight:bold; 
+}
+.nomor.kecil{ 
+    font-size:32px; 
+}
+.detail{ 
+    font-size:14px; 
+    color:#333; 
+}
+.aksi{ 
+    width:100%; 
+    display:flex; gap:8px; 
+    flex-wrap:wrap; 
+}
+.aksi button{ 
+    padding:10px 16px; 
+    cursor:pointer; 
+}
+.aksi button:disabled{ 
+    opacity:.4; 
+    cursor:not-allowed; 
+}
+.tabel-antrian{ 
+    width:100%; 
+    border-collapse:collapse; 
+}
+.baris-aktif{ 
+    background:#d9f7e3; 
+    font-weight:bold; 
+}
