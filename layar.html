@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layar Antrian - Rumah Sakit</title>
+  <link rel="stylesheet" href="css/antrian.css">
+  <script src="dist/layar.js" defer></script>
+</head>
+<body class="display-page">
+  <header class="topbar display-topbar">
+    <div>
+      <p class="eyebrow">Rumah Sakit</p>
+      <h1>Layar Antrian</h1>
+    </div>
+    <div class="user-area">
+      <span id="last-update">Memuat...</span>
+      <button id="btn-fullscreen" class="secondary-button" type="button">Fullscreen</button>
+    </div>
+  </header>
+
+  <main class="display-layout">
+    <section id="daftar-layar" class="display-grid"></section>
+    <p id="empty-layar" class="empty-text">Belum ada layanan aktif.</p>
+  </main>
+</body>
+</html>

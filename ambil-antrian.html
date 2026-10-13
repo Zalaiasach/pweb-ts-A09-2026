@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambil Antrian - Rumah Sakit</title>
+  <link rel="stylesheet" href="css/antrian.css">
+  <script src="dist/ambil-antrian.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Rumah Sakit</p>
+      <h1>Ambil Antrian</h1>
+    </div>
+    <div class="user-area">
+      <span id="user-info">Memuat user...</span>
+      <a href="layar.html" class="link-button">Layar</a>
+    </div>
+  </header>
+
+  <main class="ambil-layout">
+    <section class="ambil-panel">
+      <h2>Pilih layanan</h2>
+      <div id="daftar-layanan" class="service-grid"></div>
+      <p id="empty-layanan" class="empty-text">Belum ada layanan aktif.</p>
+    </section>
+
+    <section class="ticket-panel">
+      <h2>Data tiket</h2>
+      <form id="form-ambil-antrian">
+        <div class="field-group">
+          <label for="select-layanan">Layanan</label>
+          <select id="select-layanan" required>
+            <option value="" disabled selected>Pilih layanan</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="select-prioritas">Prioritas</label>
+          <select id="select-prioritas" required>
+            <option value="Normal" selected>Normal</option>
+            <option value="Lansia">Lansia</option>
+            <option value="Disabilitas">Disabilitas</option>
+            <option value="VIP">VIP</option>
+          </select>
+        </div>
+
+        <button type="submit" class="primary-button">Ambil Antrian</button>
+      </form>
+
+      <div id="hasil-tiket" class="ticket-result" hidden>
+        <span>Nomor antrian Anda</span>
+        <strong id="nomor-tiket">-</strong>
+        <p id="detail-tiket">Silakan menunggu panggilan operator.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
