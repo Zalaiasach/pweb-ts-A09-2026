@@ -1,0 +1,27 @@
+body{
+    margin: 10px;
+}
+
+table {
+    background: white;
+    border-collapse: separate;
+}
+
+th, td{
+    padding: 3px;
+    text-align: center;
+}
+
+td input{
+    width: 200px;
+    box-sizing: border-box;
+}
+
+#tabel-baru{
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+td button{
+    cursor: pointer;
+}
