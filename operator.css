@@ -1,85 +1,195 @@
-body{
-    margin: 10px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-table {
-    background: white;
-    border-collapse: separate;
+body {
+  background: #f4f7fb;
+  color: #172033;
+  min-height: 100vh;
 }
 
-th, td{
-    padding: 3px;
-    text-align: center;
+.topbar {
+  background: #cbdcfa;
+  border-bottom: 1px solid #b9cae8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
 }
 
-td input{
-    width: 200px;
-    box-sizing: border-box;
+.topbar h1 {
+  font-size: 1.45rem;
 }
 
-#tabel-baru{
-    margin-top: 5px;
-    cursor: pointer;
+.topbar p {
+  color: #475569;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
 }
 
-td button{
-    cursor: pointer;
+.user-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
+.nav-link,
+#btn-logout {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #334155;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+}
 
-.topbar{ 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center; 
+main {
+  padding: 1.5rem 2rem;
 }
-.panel-antrian{ 
-    display:flex; 
-    flex-wrap:wrap; 
-    gap:12px; 
-    margin-bottom:24px; 
+
+.panel-antrian {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
 }
-.kartu{ 
-    border:2px solid #444; 
-    padding:12px 20px; 
-    min-width:220px; 
-    background:#fff; 
+
+.kartu-layanan {
+  background: #ffffff;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  padding: 1rem;
 }
-.kartu-aktif{ 
-    border-color:#0a7d2c; 
+
+.kartu-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
-.kartu h2{ 
-    margin:0 0 6px; 
-    font-size:16px; 
+
+.kartu-header h2 {
+  font-size: 1.1rem;
 }
-.nomor{ 
-    font-size:48px; 
-    font-weight:bold; 
+
+.kartu-header span,
+.kartu-header strong,
+.detail {
+  color: #64748b;
+  font-size: 0.9rem;
 }
-.nomor.kecil{ 
-    font-size:32px; 
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
 }
-.detail{ 
-    font-size:14px; 
-    color:#333; 
+
+.kartu {
+  background: #f8fafc;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 0.85rem;
 }
-.aksi{ 
-    width:100%; 
-    display:flex; gap:8px; 
-    flex-wrap:wrap; 
+
+.kartu-aktif {
+  border-color: #0f766e;
 }
-.aksi button{ 
-    padding:10px 16px; 
-    cursor:pointer; 
+
+.kartu h3 {
+  font-size: 0.92rem;
+  margin-bottom: 0.45rem;
 }
-.aksi button:disabled{ 
-    opacity:.4; 
-    cursor:not-allowed; 
+
+.nomor {
+  color: #0f172a;
+  font-size: 2.5rem;
+  font-weight: 800;
 }
-.tabel-antrian{ 
-    width:100%; 
-    border-collapse:collapse; 
+
+.nomor.kecil {
+  font-size: 2rem;
 }
-.baris-aktif{ 
-    background:#d9f7e3; 
-    font-weight:bold; 
+
+.aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.aksi button {
+  background: #0f172a;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0.65rem 0.85rem;
+}
+
+.aksi button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.tabel-antrian {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabel-antrian th,
+.tabel-antrian td {
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.45rem;
+  text-align: left;
+}
+
+.tabel-antrian th {
+  color: #475569;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.baris-aktif {
+  background: #d9f7e3;
+  font-weight: 700;
+}
+
+.empty-cell,
+.empty-text {
+  color: #64748b;
+}
+
+.empty-text {
+  padding: 1rem 0;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .panel-antrian {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
 }

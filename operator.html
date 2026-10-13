@@ -1,78 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operator</title>
-
-    <script>
-        (function () {
-            try {
-                var s = JSON.parse(localStorage.getItem("auth_user"));
-                if (!s || !s.username) throw new Error("no session");
-            } catch (e) {
-                localStorage.removeItem("auth_user");
-                location.replace("login.html");
-            }
-        })();
-    </script>
-
-    <link rel="stylesheet" href="operator.css">
-    <script src="operator.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator - Antrian Rumah Sakit</title>
+  <link rel="stylesheet" href="operator.css">
+  <script src="dist/operator.js" defer></script>
 </head>
-
 <body>
-    <header class="topbar">
-        <h1>PANEL</h1>
-        <div>
-            <span id="info-user"></span>
-            <button type="button" id="btn-logout">Logout</button>
-        </div>
-    </header>
-
-    <section class="panel-antrian">
-        <div class="kartu kartu-aktif">
-            <h2>Sedang Dipanggil</h2>
-            <div class="nomor" id="nomor-aktif">-</div>
-            <div class="detail" id="detail-aktif">Tak ada panggilan</div>
-        </div>
-
-        <div class="kartu">
-            <h2>Nomor Berikutnya</h2>
-            <div class="nomor kecil" id="nomor-berikut">-</div>
-            <div class="detail" id="detail-berikut"></div>
-            <div class="detail" id="sisa-antrian"></div>
-        </div>
-
-        <div class="aksi">
-            <button type="button" id="btn-panggil">Panggil Berikutnya</button>
-            <button type="button" id="btn-lewati">Lewati</button>
-            <button type="button" id="btn-selesai">Selesai</button>
-            <button type="button" id="btn-contoh">Buat Data Contoh</button>
-        </div>
-
-        <table border="1" class="tabel-antrian">
-            <thead>
-                <tr>
-                    <th>No. Tiket</th><th>Nama</th><th>Prioritas</th><th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="daftar-antrian"></tbody>
-        </table>
-    </section>
-
-    <h1>DATA PASIEN</h1>
-    <div class="data-pasien" id="data"> <!-- nama, telepon, penyakit -->
-        <table border="5">
-            <thead>
-                <tr>
-                    <th>Nama Pasien</th><th>No. Telepon</th><th>Penyakit</th><th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody id="daftar-pasien"></tbody>
-        </table>
-
-        <button type="button" id="tabel-baru">+Add Table</button>
+  <header class="topbar">
+    <div>
+      <h1>Panel Operator</h1>
+      <p>Kelola panggilan antrean setiap layanan</p>
     </div>
+    <div class="user-actions">
+      <span id="info-user">Memuat user...</span>
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <a href="layar.html" class="nav-link">Layar</a>
+      <button type="button" id="btn-logout">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="daftar-panel-layanan" class="panel-antrian"></section>
+    <p id="empty-operator" class="empty-text">Belum ada layanan aktif.</p>
+  </main>
 </body>
 </html>
