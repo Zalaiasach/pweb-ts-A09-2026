@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hasilTiket = document.getElementById("hasil-tiket") as HTMLDivElement;
   const nomorTiketEl = document.getElementById("nomor-tiket") as HTMLElement;
   const detailTiketEl = document.getElementById("detail-tiket") as HTMLParagraphElement;
+  const logoutBtn = document.getElementById("btn-logout") as HTMLButtonElement | null;
 
   userInfoEl.textContent = `${firstName} (${role.toUpperCase()})`;
 
@@ -48,6 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderLayanan();
   window.setInterval(renderLayanan, 2500);
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
 
   selectLayanan.addEventListener("change", () => {
     selectedKode = selectLayanan.value;
@@ -90,6 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
     hasilTiket.hidden = false;
     renderLayanan();
   });
+
+  function handleLogout() {
+    localStorage.removeItem(STORAGE_KEYS.TOKEN);
+    localStorage.removeItem(STORAGE_KEYS.ROLE);
+    localStorage.removeItem(STORAGE_KEYS.NAME);
+    window.location.href = "login.html";
+  }
 
   function renderLayanan() {
     const jenisList = getJenisAntrianList().filter((item) => item.aktif);

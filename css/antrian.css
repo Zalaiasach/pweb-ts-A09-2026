@@ -23,6 +23,21 @@ body {
   padding: 1rem 2rem;
 }
 
+ .btn-logout {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .btn-logout:hover {
+    background-color: #dc2626;
+  }
+
 .eyebrow {
   color: #475569;
   font-size: 0.82rem;
